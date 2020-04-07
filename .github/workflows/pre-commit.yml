@@ -8,9 +8,9 @@ on:
   pull_request:
     branches: master
     
-    
 env:
   TFLINT_VERSION: v0.12.1
+  TF_DOCS_VERSION: v0.6.0
   tf_version : 0.12.10
   tf_working_dir: '.'
   AWS_ACCESS_KEY_ID: ${{ secrets.sum41k_aws_access_key }}  
@@ -31,6 +31,10 @@ jobs:
           sudo unzip /home/tflint.zip -d /usr/local/bin/
           sudo rm /home/tflint.zip
           sudo chmod +x /usr/local/bin/tflint
+      - name: Install terraform_docs
+        run: |
+          sudo curl -Lo /usr/local/bin/terraform-docs https://github.com/segmentio/terraform-docs/releases/download/${{ env.TF_DOCS_VERSION }}/terraform-docs-${{ env.TF_DOCS_VERSION }}-linux-amd64
+          sudo chmod +x /usr/local/bin/terraform-docs
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pre-commit
