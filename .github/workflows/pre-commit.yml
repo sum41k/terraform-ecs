@@ -13,7 +13,7 @@ on:
 env:
   TFLINT_VERSION: v0.12.1
   tf_version : 0.8.0
-  tf_working_dir: .
+#  tf_working_dir: .
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -46,7 +46,7 @@ jobs:
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'fmt'
-          tf_actions_working_dir: ${{ env.tf_working_dir }}
+#          tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'init'
-          tf_actions_working_dir: ${{ env.tf_working_dir }}
+#         tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -64,7 +64,7 @@ jobs:
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'validate'
-          tf_actions_working_dir: ${{ env.tf_working_dir }}
+#          tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,7 +73,7 @@ jobs:
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'plan'
-          tf_actions_working_dir: ${{ env.tf_working_dir }}
+#          tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
