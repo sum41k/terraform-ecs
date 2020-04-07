@@ -12,7 +12,7 @@ on:
     
 env:
   TFLINT_VERSION: v0.12.1
-  tf_version : v0.8.0
+  tf_version : 0.8.0
   tf_working_dir: .
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
