@@ -1,7 +1,7 @@
 # terraform-ecs
 
-
 Repo for implementing ECS using custom module
+
 ![Tflint](https://github.com/sum41k/terraform-ecs/workflows/Tflint/badge.svg?branch=master)
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
