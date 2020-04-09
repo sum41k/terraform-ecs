@@ -8,9 +8,9 @@ Repo for implementing ECS using custom module
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| candidate |  | string | `"vlad-senko"` | no |
-| environment |  | string | `"test"` | no |
-| region |  | string | `"eu-west-1"` | no |
+| candidate | Candidate name | string | `"vlad-senko"` | no |
+| environment | Env name | string | `"test"` | no |
+| region | AZ name | string | `"eu-west-1"` | no |
 
 ## Outputs
 
