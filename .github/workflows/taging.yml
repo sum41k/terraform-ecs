@@ -15,10 +15,35 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
+#    - name: Setting tag version
+#      run: echo ::set-output name=repo_tag::$(echo ${GITHUB_REF} | cut -d'/' -f3)-${GITHUB_SHA}
+  latest_tag:
+    runs-on: ubuntu-latest
+    needs: create_tag
+    steps:
+      - uses: actions/checkout@v1
+      - name: 'Get_Previous_tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@master"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+#       - name: 'Get next minor version'
+#         id: semvers
+#         uses: "WyriHaximus/github-action-next-semvers@master"
+#         with:
+#           version: ${{ steps.previoustag.outputs.tag }}
+#       - name: 'Create new milestone'
+#         id: createmilestone
+#         uses: "WyriHaximus/github-action-create-milestone@master"
+#         with:
+#           title: ${{ steps.semvers.outputs.patch }}
+#         env:
+#           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    
   create_release:
     name: Create Release
     runs-on: ubuntu-latest
-    needs: create_tag
+    needs: latest_tag
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -28,11 +53,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ jobs.latest_tag.steps.previoustag.outputs.tag }}
+          release_name: Release ${{ jobs.latest_tag.steps.previoustag.outputs.tag }}
           body: |
             Changes in this Release
             - First Change
             - Second Change
           draft: false
-          prerelease: false
+          prerelease: true
