@@ -63,11 +63,7 @@ resource "aws_ecs_service" "demo_ecs_service" {
     container_name   = "test-container"
     container_port   = var.app_port
     target_group_arn = join(",", module.alb.target_group_arns)
-    # target_group_arn = aws_lb_target_group.test_tg.arn
-    # module.alb.target_group_arns[0]
-
   }
-  # depends_on = ["aws_lb.web_alb"]
   depends_on = [module.alb]
 }
 
